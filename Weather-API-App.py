@@ -34,7 +34,8 @@ config = ConfigParser()
 config.read(config_file)
 api_key = config['api_key']['key']
 
-#Function for what happens when the "Click for weather" button is clicked - setting all the labels with the corresponding data from the OpenWeatherMap API and also getting the correct weather icon image from image_function()
+#Function for what happens when the "Click for weather" button is clicked - 
+#setting all the labels with the corresponding data from the OpenWeatherMap API and also getting the correct weather icon image from image_function()
 def search():
     city = city_text.get()
     results = get_weather(city)
@@ -74,10 +75,12 @@ hour=StringVar()
 minute=StringVar()
 second=StringVar()
 
-#Place holder for weather condition icons that will be replaced with the correct weather icon depending on the weather description from the OpenWeatherMap API (it is just a blank image so that img is initialized)
+#Place holder for weather condition icons that will be replaced with the correct weather icon depending on 
+#the weather description from the OpenWeatherMap API (it is just a blank image so that img is initialized)
 img = PhotoImage(file = 'weather_icons/iconPlaceHolder.png')
 
-#Function that gets the icon that will replace the weather icon place holder depeding on what the weatherDescription_lbl contains (The blank image will be replaced by an image/icon of the weather condition)
+#Function that gets the icon that will replace the weather icon place holder depeding on what the 
+#weatherDescription_lbl contains (The blank image will be replaced by an image/icon of the weather condition)
 def image_funtion():
     if weatherDescription_lbl['text'] == 'Clear':
         img2 = PhotoImage(file='weather_icons/01d.png')
@@ -169,18 +172,18 @@ def countdowntimer():
         clock_input -= 1
     
 #Weather app HEADER
-weather_app = Label(root,text="YOUR WEATHER TODAY",font=("Times", "24", "bold italic"), bg='#87ceeb',pady=5)
+weather_app = Label(root,text="Type a city and click",font=("monospace", "24", "bold italic"), bg='#87ceeb',pady=5)
 weather_app.pack()
 
 #city_text variable to hold the city name the user types in 
 city_text = StringVar()
 
 #Input box that the user can type the city name they wish to see the weather for
-city_entry = Entry(root, textvariable=city_text, font=("Arial", "20"),width=30,borderwidth=4, justify=CENTER)
+city_entry = Entry(root, textvariable=city_text, font=("monospace", "20"),width=30,borderwidth=0, justify=CENTER)
 city_entry.pack()
 
 #Button the user clicks to trigger the function that gets the weather information of the city they typed in from the OpenWeatherMap API 
-search_btn = Button(root, text="Click for weather",font=("Times", "12", "bold"), width=24, borderwidth=6, bg="#A9A9A9", fg="black",command=search)
+search_btn = Button(root, text="Click for weather",font=("monospace", "12", "bold"), width=24, borderwidth=6, bg="#000000", fg="#ffffff",command=search)
 search_btn.place(x=170,y=100)
 
 #Label for the city name and country to be placed into from the OpenWeatherMap API
@@ -212,11 +215,11 @@ clock_lbl = Label(root, text="Weather will update in :",font=("pacifico", "14"),
 clock_lbl.place(x=300,y=530)
 
 #Label above wind speeds
-wind_lbl = Label(root, text="Wind Speeds :",font=("pacifico", "16"),bg='#87ceeb')
+wind_lbl = Label(root, text="Wind Speeds:",font=("monospace", "16"),bg='#87ceeb')
 wind_lbl.place(x=20,y=440)
 
 #Label above humidity
-hum_lbl = Label(root, text="Humidity :",font=("pacifico", "16"),bg='#87ceeb')
+hum_lbl = Label(root, text="Humidity:",font=("monospace", "16"),bg='#87ceeb')
 hum_lbl.place(x=20,y=530)
 
 #30 minute count down labels for the hours, minutes and seconds to be placed into to show the countdown taking place from 30 minutes until no time is remaining
